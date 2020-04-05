@@ -14,7 +14,7 @@ const uri = "mongodb+srv://khangse616:khangse616@cluster0-wpib7.mongodb.net/data
 //   client.close();
 // });
 
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.once("open", ()=>{
     console.log("connected to database");
 });
