@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 // const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://khangse616:khangse616@cluster0-wpib7.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://khangse616:khangse616@cluster0-wpib7.mongodb.net/databaseGraphql?retryWrites=true&w=majority";
 // const client = new MongoClient(uri, { useNewUrlParser: true });
 // client.connect(err => {
 //   const collection = client.db("test").collection("devices");
