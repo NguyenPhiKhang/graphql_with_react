@@ -14,20 +14,20 @@ const {
 } = graphql;
 
 // dummy data
-var books = [
-    { name: "Name of the Wind", genre: "Fantasy", id: "1", authorId: "2" },
-    { name: "The final Empire", genre: "Fantasy", id: "2", authorId: "3" },
-    { name: "The Long Earth", genre: "Sci-Fi", id: "3", authorId: "1" },
-    { name: "The Hero of Ages", genre: "Sci-Fi", id: "4", authorId: "2" },
-    { name: "The Colour of Magic", genre: "Sci-Fi", id: "5", authorId: "2" },
-    { name: "The Light Fantasic", genre: "Sci-Fi", id: "6", authorId: "3" },
-];
+// var books = [
+//     { name: "Name of the Wind", genre: "Fantasy", id: "1", authorId: "2" },
+//     { name: "The final Empire", genre: "Fantasy", id: "2", authorId: "3" },
+//     { name: "The Long Earth", genre: "Sci-Fi", id: "3", authorId: "1" },
+//     { name: "The Hero of Ages", genre: "Sci-Fi", id: "4", authorId: "2" },
+//     { name: "The Colour of Magic", genre: "Sci-Fi", id: "5", authorId: "2" },
+//     { name: "The Light Fantasic", genre: "Sci-Fi", id: "6", authorId: "3" },
+// ];
 
-var authors = [ 
-    { name: "ASDFG", age: 12, id: "1" },
-    { name: "jjlkjljklj", age: 86, id: "2" },
-    { name: "gnuyen phi khang", age: 22, id: "3" }
-];
+// var authors = [ 
+//     { name: "ASDFG", age: 12, id: "1" },
+//     { name: "jjlkjljklj", age: 86, id: "2" },
+//     { name: "gnuyen phi khang", age: 22, id: "3" }
+// ];
 
 const BookType = new GraphQLObjectType({
     name: "Book",
