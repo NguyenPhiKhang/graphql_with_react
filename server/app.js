@@ -2,8 +2,12 @@ const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const schema = require("./schema/schema");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
+
+// allow cross-origin requests
+app.use(cors());
 
 // const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://khangse616:khangse616@cluster0-wpib7.mongodb.net/databaseGraphql?retryWrites=true&w=majority";
