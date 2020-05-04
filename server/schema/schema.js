@@ -131,9 +131,32 @@ const Mutation = new GraphQLObjectType({
                     genre: args.genre,
                     authorId: args.authorId
                 });
+
                 return book.save();
             }
+        },
+        updateAuthor:{
+            type: AuthorType,
+            args:{
+                id: {type: GraphQLNonNull(GraphQLID)},
+                name: {type: GraphQLString},
+                age: {type: GraphQLInt}
+            },
+            async resolve(parent, args){
+                let author = await Author.findOne({_id: args.id});
+                console.log(author.age);
+                return Author.findOneAndUpdate({_id: args.id},
+                    {"$set": { name: args.name?args.name:author.name, age: args.age?args.age:author.age}}, 
+                    {new: true},
+                    (err, Author) => {
+                        if (err) {
+                          console.log('Something went wrong when updating the book');
+                        } else {}
+                    }
+                )
+            }
         }
+
     }
 });
 

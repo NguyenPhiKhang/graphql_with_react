@@ -1,33 +1,39 @@
 const express = require("express");
-const graphqlHTTP = require("express-graphql");
+const {createServer} = require("http");
+const {graphqlExpress, graphiqlExpress} = require("graphql-server-express");
 const schema = require("./schema/schema");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 
 const app = express();
 
 // allow cross-origin requests
 app.use(cors());
 
-// const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://khangse616:khangse616@cluster0-wpib7.mongodb.net/databaseGraphql?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+app.use(bodyParser.json());
 
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-wpib7.mongodb.net/databaseGraphql?retryWrites=true&w=majority`;
+
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});
 mongoose.connection.once("open", ()=>{
     console.log("connected to database");
 });
 
-app.use("/graphql", graphqlHTTP({
-    schema,
-    graphiql: true
-}));
+// app.use("/graphql", graphqlHTTP({
+//     schema,
+// }));
 
-app.listen(4000, ()=>{
+app.use('/graphql', graphqlExpress({
+    schema
+}))
+
+app.use("/graphiql",graphiqlExpress({
+    endpointURL: '/graphql'
+}))
+
+const server = createServer(app);
+
+server.listen(4000, ()=>{
     console.log("now listening for request on port 4000");
 });
