@@ -6,7 +6,7 @@ import BookList from './components/BookList';
 import AddBook from './components/AddBook';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: "https://gql-uit.herokuapp.com/graphql"
 })
 
 class App extends Component {
